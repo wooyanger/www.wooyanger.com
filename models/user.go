@@ -17,7 +17,7 @@ type User struct {
 }
 
 func (u *User) Get(uid int64) *User {
-	newUser := &User{ID: uid}
+	newUser := &User{Id: uid}
 	ok, err := x.Get(newUser)
 	if ok && err == nil {
 		return newUser
