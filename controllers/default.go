@@ -3,12 +3,14 @@ package controllers
 import (
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/sessions"
+	"www.wooyanger.com/models"
 )
 
 const UserIdKey  = "UserId"
 
 type Controllers struct {
 	Ctx			iris.Context
+	Post		*models.Post
 	Session		*sessions.Session
 }
 

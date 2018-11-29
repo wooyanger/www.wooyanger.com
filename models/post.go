@@ -6,13 +6,19 @@ import (
 )
 
 type Post struct {
-	ID			int64		`xorm: "int(12) not null autoincr pk"`
+	Id			int64		`xorm: "int(12) not null autoincr pk"`
 	Title		string		`xorm: "varchar(256) not null unique"`
 	Content		string		`xorm: "text not null"`
 	CreateAt	time.Time	`xorm: "datetime not null"`
 	UpdateAt	time.Time	`xorm: "datetime not null"`
 	Tags		string		`xorm: "varchar(256) not null"`
-	UID			int64		`xorm: "int(12) not null"`
+	Uid			int64		`xorm: "int(12) not null"`
+}
+
+func (p *Post) GetAll() []Post {
+	postList := []Post{}
+	x.Find(&postList)
+	return postList
 }
 
 func IsTitleExist(title string) (bool, error) {
@@ -32,5 +38,10 @@ func CreatePost(p *Post) error {
 	} else if isTitle {
 		return fmt.Errorf("title has been used [title: %s]", p.Title)
 	}
-	return nil
+	sess := x.NewSession()
+	defer sess.Close()
+	if _, err = sess.Insert(p); err != nil {
+		return err
+	}
+	return sess.Commit()
 }
