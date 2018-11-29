@@ -7,11 +7,13 @@ import (
 )
 
 var (
-	x	*xorm.Engine
-	e	error
+	x		*xorm.Engine
+	e		error
+	tables	[]interface{}
 )
 
 func init()  {
+	tables = append(tables, new(User))
 	x, e = xorm.NewEngine("mysql", setting.DbDsn)
 	if e != nil {
 		logs.Fatalf("%v", e)
