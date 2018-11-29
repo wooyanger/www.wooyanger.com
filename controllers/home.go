@@ -11,6 +11,7 @@ func (h *HomeController) Get() mvc.Result {
 	return mvc.View{
 		Name: "home.html",
 		Data: map[string]interface{}{
+            "Title": "Home",
 			"Posts": postList,
 		},
 	}

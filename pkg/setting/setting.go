@@ -6,6 +6,7 @@ import (
 	"www.wooyanger.com/pkg/logs"
 )
 
+// 定义全局变量
 var (
 	HttpHost	string
 	HttpPort	int64
@@ -22,6 +23,7 @@ var (
 	Error		error
 )
 
+// 初始化
 func init() {
 	Cfg, Error = ini.Load("./config/server.ini")
 	if Error != nil {

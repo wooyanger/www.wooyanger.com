@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// 定义用户模型
 type User struct {
 	Id				int64		`xorm: "int(12) not null autoincr pk"`
 	Username		string		`xorm: "varchar(32) not null unique"`
@@ -16,6 +17,7 @@ type User struct {
 	CreateAt		time.Time	`xorm: "datetime not null"`
 }
 
+// 获取用户信息
 func (u *User) Get(uid int64) *User {
 	newUser := &User{Id: uid}
 	ok, err := x.Get(newUser)
@@ -25,12 +27,15 @@ func (u *User) Get(uid int64) *User {
 	return nil
 }
 
+// 生成密码
 func (u *User) GeneratePasswordHash() {
 	hash := md5.New()
 	hash.Write([]byte(u.PasswordHash))
 	u.PasswordHash = hex.EncodeToString(hash.Sum(nil))
 }
 
+
+// 验证密码是否正确
 func (u *User) ValidatePassword(password string) bool {
 	newUser := &User{PasswordHash: password}
 	newUser.GeneratePasswordHash()
@@ -40,6 +45,7 @@ func (u *User) ValidatePassword(password string) bool {
 	return false
 }
 
+// 用户登录
 func UserLogin(username string, password string) (*User, error) {
 	var newUser *User
 	if len(username) == 0 || len(password) == 0 {
