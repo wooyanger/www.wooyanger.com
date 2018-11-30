@@ -51,7 +51,26 @@ func CreatePost(p *Post) error {
 	return sess.Commit()
 }
 
+// 更新文章
+func UpdatePost(p *Post) error {
+	p.UpdateAt = time.Now()
+	_, err := x.ID(p.Id).AllCols().Update(p)
+	return err
+}
+
 // 删除文章
-//func DeletePost(p *Post) error {
-//    
-//}
+func DeletePost(p *Post) error {
+	sess := x.NewSession()
+	defer sess.Close()
+	if err := sess.Begin(); err != nil {
+		return err
+	}
+	if _, err := x.ID(p.Id).Delete(p);err != nil {
+		return err
+	}
+
+	if err := sess.Commit();err != nil {
+		return err
+	}
+	return nil
+}
