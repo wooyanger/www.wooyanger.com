@@ -13,5 +13,6 @@ func main() {
 	app.RegisterView(ViewEngine.Reload(true))
 	app.StaticWeb("/public", "./public")
 	mvc.New(app).Handle(new(controllers.HomeController))
+	mvc.New(app.Party("/file")).Handle(new(controllers.FileController))
 	app.Run(iris.Addr(setting.ListenAddr))
 }
