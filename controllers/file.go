@@ -12,6 +12,7 @@ type FileController struct {
 
 func (f *FileController) PostUpload() {
 	file, fileheader, err := f.Ctx.FormFile("file")
+	defer file.Close()
 	if err != nil {
 		f.Ctx.JSON(map[string]interface{}{"code": 1, "state": "fatal", "msg": err})
 	}

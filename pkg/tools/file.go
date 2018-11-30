@@ -1,6 +1,7 @@
 package tools
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/satori/go.uuid"
 	"io"
@@ -40,6 +41,13 @@ func FileExtension(fileheader multipart.FileHeader) string {
 }
 
 func CreateImgFile(file multipart.File, fileheader multipart.FileHeader) error {
+	buf := bytes.NewBuffer(nil)
+	if _, err := io.Copy(buf, file); err != nil {
+		return err
+	}
+	if !IsImageFile(buf.Bytes()) {
+		return fmt.Errorf("sorry, the file type is unsupporsed.")
+	}
 	newFilename := fmt.Sprintf("%s.%s", uuid.Must(uuid.NewV4()), FileExtension(fileheader))
 	out, err := os.OpenFile(newFilename, os.O_WRONLY|os.O_CREATE, 0600)
 	if err != nil {
