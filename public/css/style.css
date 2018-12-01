@@ -12,3 +12,14 @@
 .intro-header {
     padding: 150px 0px;
 }
+
+
+.post-preview {
+    padding: 20px 0px;
+}
+
+.post-content-preview {
+    font-size: .8rem;
+    font-style: italic;
+    color: #a3a3a3;
+}
