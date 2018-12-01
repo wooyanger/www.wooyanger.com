@@ -5,10 +5,46 @@
     <title>{{ .Title }}</title>
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/iconmoon.css">
+    <link rel="stylesheet" href="/public/css/style.css">
     <script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
 </head>
 <body>
+    <div class="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 offset-2">
+                    <div class="intro-header">
+                         <h1 class="text-center text-white">This is my blog</h1>
+                         <p class="text-center text-white">追求卓越，成功自然会追上你。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top position-absolute bg-transparent">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggle-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/posts">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/tags">Tags</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 {{/*
 </body>
 </html> 
