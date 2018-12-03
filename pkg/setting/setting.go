@@ -3,6 +3,8 @@ package setting
 import (
 	"fmt"
 	"github.com/go-ini/ini"
+	"github.com/kataras/iris/sessions"
+	"time"
 	"www.wooyanger.com/pkg/logs"
 )
 
@@ -21,6 +23,8 @@ var (
 	ListenAddr	string
 	Cfg			*ini.File
 	Error		error
+
+	SessionCfg	sessions.Config
 )
 
 // 初始化
@@ -31,9 +35,12 @@ func init() {
 	}
 	ServerSec := Cfg.Section("server")
 	DatabaseSec := Cfg.Section("database")
+	SessionSec := Cfg.Section("session")
 	HttpHost = ServerSec.Key("HOST").MustString("127.0.0.1")
 	HttpPort = ServerSec.Key("PORT").MustInt64(1110)
 	ListenAddr = fmt.Sprintf("%s:%d", HttpHost, HttpPort)
+	SessionCfg.Cookie = SessionSec.Key("COOKIE_NAME").MustString("MY_COOKIE")
+	SessionCfg.Expires = SessionSec.Key("SESSION_LIFE_TIME").MustDuration(24 * time.Hour)
 	DbHost = DatabaseSec.Key("HOST").MustString("127.0.0.1")
 	DbPort = DatabaseSec.Key("Port").MustInt64(3306)
 	DbUser = DatabaseSec.Key("USER").MustString("root")
