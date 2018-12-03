@@ -2,7 +2,6 @@ package models
 
 import (
 	"fmt"
-	"strings"
 	"time"
 )
 
@@ -74,10 +73,4 @@ func DeletePost(p *Post) error {
 		return err
 	}
 	return nil
-}
-
-func (p *Post) GetTags() []string {
-	var tags []string
-	tags = strings.Split(p.Tags, ",")
-	return tags
 }

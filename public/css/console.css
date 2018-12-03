@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+    .my-navbar-collapse {
+        position: absolute;
+        top: 3.75rem;
+        right: 1rem;
+        width: 10rem;
+        background-color: #343a40;
+        z-index: 20;
+    }
+    .my-navbar-collapse .nav-link {
+        color: #ffffff !important;
+    }
+    .login-widget {
+        padding-top: 110px;
+        padding-bottom: 235px;
+    }
+}
+
+@media (min-width: 992px) {
+    .login-widget {
+        padding-top: 130px;
+        padding-bottom: 255px;
+    }
+    .login-form {
+        padding: 2rem 1rem;
+    }
+}
