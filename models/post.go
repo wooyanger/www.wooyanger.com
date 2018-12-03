@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -12,7 +13,7 @@ type Post struct {
 	Content		string		`xorm: "text not null"`
 	CreateAt	time.Time	`xorm: "datetime not null"`
 	UpdateAt	time.Time	`xorm: "datetime not null"`
-	Tags		string		`xorm: "varchar(256) not null"`
+	//Tags		string		`xorm: "varchar(256) not null"`
 	Uid			int64		`xorm: "int(12) not null"`
 }
 
@@ -73,4 +74,10 @@ func DeletePost(p *Post) error {
 		return err
 	}
 	return nil
+}
+
+func (p *Post) GetTags() []string {
+	var tags []string
+	tags = strings.Split(p.Tags, ",")
+	return tags
 }
