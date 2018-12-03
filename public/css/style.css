@@ -18,6 +18,11 @@
     padding: 20px 0px;
 }
 
+.post-attr {
+    font-style: italic;
+    font-weight: bold;
+}
+
 .post-content-preview {
     font-size: .8rem;
     font-style: italic;
