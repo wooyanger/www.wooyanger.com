@@ -1,3 +1,17 @@
+@media (max-width: 768px) {
+    .my-navbar-collapse {
+        position: absolute;
+        top: 3.75rem;
+        right: 1rem;
+        width: 10rem;
+        background-color: #ffffff;
+        z-index: 20;
+    }
+    .my-navbar-collapse .nav-link {
+        color: #343a40 !important;
+    }
+}
+
 .intro {
 	background: no-repeat center center;
     background-color: gray;
