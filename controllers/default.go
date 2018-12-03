@@ -25,3 +25,8 @@ func (c *Controllers) CurrentUserId() int64 {
 func (c *Controllers) IsLogged() bool {
 	return c.CurrentUserId() > 0
 }
+
+// 登录
+func (c *Controllers) LoginUser(uid int64) {
+	c.Session.Set(UserIdKey, uid)
+}
