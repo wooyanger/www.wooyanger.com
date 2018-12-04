@@ -18,7 +18,7 @@ type Post struct {
 
 // 获取所有文章
 func (p *Post) GetAll() []Post {
-	postList := []Post{}
+	postList := make([]Post, 0)
 	x.Find(&postList)
 	return postList
 }

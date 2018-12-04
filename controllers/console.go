@@ -21,12 +21,19 @@ func (c *ConsoleController) GetLogin() mvc.Result {
 			Code: 302,
 		}
 	}
+	flashMsg := c.Session.GetFlash(authFatalMsgKey)
 	return mvc.View{
 		Name: "console/login.html",
 		Data: map[string]interface{}{
 			"Title": "管理后台",
+			"AuthFatalMsg": flashMsg,
 		},
 	}
+}
+
+func (c *ConsoleController) GetLogout() {
+	c.Session.Destroy()
+	c.Ctx.Redirect(loginUrl, 302)
 }
 
 func (c *ConsoleController) PostLogin() {
@@ -46,8 +53,13 @@ func (c *ConsoleController) PostLogin() {
 
 func (c *ConsoleController) GetIndex() mvc.Result {
 	if c.IsLogged() {
+		posts := c.Post.GetAll()
 		return mvc.View{
 			Name: "console/index.html",
+			Data: map[string]interface{}{
+				"Title": "管理后台",
+				"Posts": posts,
+			},
 		}
 	}
 	return mvc.Response{

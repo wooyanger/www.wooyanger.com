@@ -19,9 +19,50 @@
 @media (min-width: 992px) {
     .login-widget {
         padding-top: 130px;
-        padding-bottom: 255px;
+        padding-bottom: 235px;
     }
     .login-form {
         padding: 2rem 1rem;
+    }
+    .login-tips {
+        height: 19px;
+    }
+    .console-navbar {
+        margin: 1rem;
+        padding: 0px;
+        border: 1px solid #e1e4e8;
+    }
+    .console-menu-title {
+        border-bottom: 1px solid #e1e4e8;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        background-color: #f3f5f8;
+        color: #586069;
+        padding: 8px 16px;
+        font-weight: bold;
+    }
+    .console-menu-item {
+        border-bottom: 1px solid #e1e4e8;
+    }
+    .console-menu-item .selected {
+        background-color: #fff;
+        color: #24292e;
+        cursor: pointer;
+        border-left: 2px solid #e36209;
+    }
+    .console-content {
+        margin: 1rem;
+    }
+    .console-content-title {
+        border-bottom: 1px solid #e1e4e8;
+    }
+    .console-content-title>h2 {
+        font-size: 24px;
+    }
+    .console-content li {
+        margin: 0px;
+    }
+    .console-content li:nth-of-type(odd) {
+        background-color: rgba(0,0,0,.05);
     }
 }
