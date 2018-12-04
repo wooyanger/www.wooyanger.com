@@ -23,6 +23,17 @@ func (p *Post) GetAll() []Post {
 	return postList
 }
 
+// 获取指定文章
+func (p *Post) Get(id int64) *Post {
+	post := &Post{Id: id}
+	ok, err := x.Get(post)
+	if ok && err == nil {
+		return post
+	} else {
+		return nil
+	}
+}
+
 
 // 检测文章标题是否存在
 func IsTitleExist(title string) (bool, error) {
