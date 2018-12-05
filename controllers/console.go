@@ -53,7 +53,7 @@ func (c *ConsoleController) PostLogin() {
 
 func (c *ConsoleController) GetIndex() mvc.Result {
 	if c.IsLogged() {
-		posts := c.Post.GetAll()
+		posts := c.Post.GetAllPost()
 		return mvc.View{
 			Name: "console/index.html",
 			Data: map[string]interface{}{

@@ -7,7 +7,7 @@ type HomeController struct {
 }
 
 func (h *HomeController) Get() mvc.Result {
-	postList := h.Post.GetAll()
+	postList := h.Post.GetAllPost()
 	return mvc.View{
 		Name: "home.html",
 		Data: map[string]interface{}{
