@@ -17,6 +17,9 @@
 }
 
 @media (min-width: 992px) {
+    #editor {
+        height: 300px;
+    }
     .login-widget {
         padding-top: 130px;
         padding-bottom: 235px;

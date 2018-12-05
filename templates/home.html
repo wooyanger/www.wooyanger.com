@@ -1,24 +1,21 @@
-{{ template "base/head.html" .}}
-<style>
-    .intro {
-        background-image: url('/public/img/home.jpg');
-    }
-</style>
-
-<div class="container">
-    <div class="">
-        {{ range .Posts }}
+{{- template "base/head.html" . }}
+    <style>
+        .intro {
+            background-image: url('/public/img/home.jpg');
+        }
+    </style>
+    <div class="container">
+        <div class="">
+            {{- range .Posts }}
             <div class="post-preview">
                 <h2><a class="card-link" href="/posts/{{ .Id }}">{{ .Title }}</a></h2>
                 <p class="text-secondary post-attr m-0" >
                     Posted by wooyanger on {{ .CreateAt }}
-                    {{/*{{ range .GetTags }}*/}}
-                        {{/*<span class="badge badge-primary">{{ . }}</span>*/}}
-                    {{/*{{ end }}*/}}
-                </p><hr class="my-1">
+                </p>
+                <hr class="my-1">
                 <p><a class="card-link post-content-preview" href="/posts/{{ .Id }}">{{ .Content }}</a></p>
             </div>
-        {{ end }}
+            {{- end }}
+        </div>
     </div>
-</div>
-{{ template "base/footer.html" .}}
+{{- template "base/footer.html" . }}
