@@ -17,14 +17,14 @@ type Post struct {
 }
 
 // 获取所有文章
-func (p *Post) GetAll() []Post {
+func (p *Post) GetAllPost() []Post {
 	postList := make([]Post, 0)
 	x.Find(&postList)
 	return postList
 }
 
 // 获取指定文章
-func (p *Post) Get(id int64) *Post {
+func (p *Post) GetPostById(id int64) *Post {
 	post := &Post{Id: id}
 	ok, err := x.Get(post)
 	if ok && err == nil {
