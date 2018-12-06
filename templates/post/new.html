@@ -14,10 +14,13 @@
             <script>
                 var toolbarOptions = [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    ['bold', 'italic', 'underline', { 'color': [] }],        // toggled buttons
+                    ['bold', 'italic', 'underline', { 'color': [] }],
                     ['blockquote', 'code-block'],
                     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    ['align', 'clean']
+                    [{'indent': '+1'}, {'indent': '-1'}],
+                    [{'align': ''}, {'align': 'center'}, {'align': 'right'}],
+                    ['image', 'link', 'video'],
+                    ['undo',]
                 ];
                 var editor = new Quill("#editor", {
                     modules: { toolbar: toolbarOptions },
