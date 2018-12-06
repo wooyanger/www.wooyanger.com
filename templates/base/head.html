@@ -10,8 +10,9 @@
     <script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
     {{ if .RequireQuillPlugin }}
-    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <link href="/public/css/quill.snow.css" rel="stylesheet">
+    <link href="/public/css/quill-translate.css" rel="stylesheet">
+    <script src="/public/js/quill.min.js"></script>
     {{ end }}
     {{ if .RequireConsolePlugin }}
     <link rel="stylesheet" href="/public/css/console.css">
