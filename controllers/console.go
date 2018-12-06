@@ -27,6 +27,7 @@ func (c *ConsoleController) GetLogin() mvc.Result {
 		Data: map[string]interface{}{
 			"Title": "管理后台",
 			"AuthFatalMsg": flashMsg,
+			"RequireConsolePlugin": true,
 		},
 	}
 }

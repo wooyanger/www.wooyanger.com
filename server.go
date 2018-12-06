@@ -14,7 +14,7 @@ func main() {
 	ViewEngine := iris.HTML("./templates", ".html")
 	app.RegisterView(ViewEngine.Reload(true))
 	app.StaticWeb("/public", "./public")
-	mvc.New(app).Handle(new(controllers.HomeController))
+	mvc.New(app).Register(session.Start).Handle(new(controllers.HomeController))
 	mvc.New(app.Party("/console")).Register(session.Start).Handle(new(controllers.ConsoleController))
 	mvc.New(app.Party("/posts")).Register(session.Start).Handle(new(controllers.PostController))
 	mvc.New(app.Party("/file")).Handle(new(controllers.FileController))

@@ -14,7 +14,8 @@ func (p *PostController) GetBy(id int64) mvc.Result {
 	return mvc.View{
 		Name: "post/view.html",
 		Data: map[string]interface{}{
-			"Title": "管理后台",
+			"Title": post.Title,
+			"IntroHeader": post.Title,
 			"Post": post,
 		},
 	}
@@ -28,6 +29,7 @@ func (p *PostController) GetNew() mvc.Result {
 				"Title": "",
 				"Authenticated": true,
 				"RequireQuillPlugin": true,
+				"RequireConsolePlugin": true,
 			},
 		}
 	} else {

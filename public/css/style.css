@@ -1,3 +1,13 @@
+.intro {
+    background: no-repeat center center;
+    background-color: gray;
+    background-attachment: scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-bottom: 0;
+}
 @media (max-width: 768px) {
     .my-navbar-collapse {
         position: absolute;
@@ -10,35 +20,45 @@
     .my-navbar-collapse .nav-link {
         color: #343a40 !important;
     }
+    .intro-header {
+        padding: 110px 0;
+    }
+    .post-preview {
+        padding: 20px 0px 0px 0px;
+    }
+
+    .post-attr {
+        font-style: italic;
+        font-weight: bold;
+    }
+
+    .post-content-preview {
+        font-size: 1rem;
+        font-style: italic;
+        color: #a3a3a3;
+    }
 }
-
-.intro {
-	background: no-repeat center center;
-    background-color: gray;
-    background-attachment: scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    margin-bottom: 0;
-}
-
-.intro-header {
-    padding: 150px 0px;
-}
+@media (min-width: 992px) {
+    .intro-header {
+        padding: 150px 0px;
+    }
 
 
-.post-preview {
-    padding: 20px 0px;
-}
+    .post-preview {
+        padding: 20px 0px 0px 0px;
+    }
 
-.post-attr {
-    font-style: italic;
-    font-weight: bold;
-}
+    .post-attr {
+        font-style: italic;
+        font-weight: bold;
+    }
 
-.post-content-preview {
-    font-size: .8rem;
-    font-style: italic;
-    color: #a3a3a3;
+    .post-content-preview {
+        font-size: 1rem;
+        font-style: italic;
+        color: #a3a3a3;
+    }
+    .post-body {
+        margin: 20px 0px;
+    }
 }

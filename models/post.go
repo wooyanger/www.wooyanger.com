@@ -12,7 +12,6 @@ type Post struct {
 	Content		string		`xorm: "text not null"`
 	CreateAt	time.Time	`xorm: "datetime not null"`
 	UpdateAt	time.Time	`xorm: "datetime not null"`
-	//Tags		string		`xorm: "varchar(256) not null"`
 	Uid			int64		`xorm: "int(12) not null"`
 }
 

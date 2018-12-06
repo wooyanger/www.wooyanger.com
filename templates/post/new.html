@@ -1,16 +1,15 @@
 {{ template "base/head.html" .}}
         <div class="container-fluid">
-            <div class="mt-lg-5">
-                <form>
+            <div class="post-edit-widget">
+                <form method="post">
                     <div class="form-group">
-                        <input class="form-control" placeholder="Title">
+                        <input name="post-title" class="form-control" placeholder="文章标题">
                     </div>
                     <div class="form-group">
-                        <div id="editor"></div>
+                        <div id="editor" class="post-content"></div>
                     </div>
                 </form>
             </div>
-            {{/*<div id="editor"></div>*/}}
             <script>
                 var toolbarOptions = [
                     [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -24,8 +23,9 @@
                 ];
                 var editor = new Quill("#editor", {
                     modules: { toolbar: toolbarOptions },
-                    placeholder: "Please enter you content.",
+                    placeholder: "您想说点什么？",
                     theme: 'snow'
                 });
             </script>
         </div>
+        {{ template "base/footer.html" }}

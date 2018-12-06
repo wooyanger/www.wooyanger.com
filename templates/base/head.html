@@ -12,10 +12,11 @@
     {{ if .RequireQuillPlugin }}
     <link href="/public/css/quill.snow.css" rel="stylesheet">
     <link href="/public/css/quill-translate.css" rel="stylesheet">
-    <script src="/public/js/quill.min.js"></script>
+    <script src="/public/js/quill.js"></script>
     {{ end }}
     {{ if .RequireConsolePlugin }}
     <link rel="stylesheet" href="/public/css/console.css">
+    <script type="text/javascript" src="/public/js/console.js"></script>
     {{ end }}
 </head>
 <body>
@@ -24,8 +25,9 @@
             <div class="row">
                 <div class="col-10 offset-1 col-lg-8 offset-lg-2">
                     <div class="intro-header">
-                         <h1 class="text-center text-white">This is my blog</h1>
-                         <p class="text-center text-white">追求卓越，成功自然会追上你。</p>
+                         <h1 class="text-center text-white">{{ .IntroHeader }}</h1>
+                         {{/*<p class="text-center text-white">追求卓越，成功自然会追上你。</p>*/}}
+                         <p class="text-center text-white">{{ .IntroContent }}</p>
                     </div>
                 </div>
             </div>
@@ -54,6 +56,9 @@
                 {{ if .Authenticated }}
                     <li class="nav-item">
                         <a class="nav-link font-weight-bold px-3" href="/console/index">Console</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link font-weight-bold px-3" href="/console/logout">Logout</a>
                     </li>
                 {{ end }}
             </ul>

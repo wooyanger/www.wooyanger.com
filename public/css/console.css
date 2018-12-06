@@ -11,18 +11,13 @@
         color: #ffffff !important;
     }
     .login-widget {
-        padding-top: 110px;
-        padding-bottom: 235px;
+        padding-bottom: 130px;
     }
 }
 
 @media (min-width: 992px) {
-    #editor {
-        height: 300px;
-    }
     .login-widget {
-        padding-top: 130px;
-        padding-bottom: 235px;
+        padding-bottom: 85px;
     }
     .login-form {
         padding: 2rem 1rem;
@@ -67,5 +62,11 @@
     }
     .console-content li:nth-of-type(odd) {
         background-color: rgba(0,0,0,.05);
+    }
+    .post-edit-widget {
+        margin-top: 3rem;
+    }
+    #editor {
+        min-height: 200px;
     }
 }

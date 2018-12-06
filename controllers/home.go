@@ -13,6 +13,7 @@ func (h *HomeController) Get() mvc.Result {
 		Data: map[string]interface{}{
             "Title": "Home",
 			"Posts": postList,
+			"Authenticated": h.IsLogged(),
 		},
 	}
 }

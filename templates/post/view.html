@@ -1,4 +1,7 @@
 {{ template "base/head.html" .}}
-<div>
+<div class="container">
+    <div class="post-body">
     {{ .Post.Title }}
+    </div>
 </div>
+{{ template "base/footer.html" .}}
