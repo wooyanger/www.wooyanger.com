@@ -31,7 +31,7 @@
                     {{ range .Posts }}
                     <li class="row py-2">
                         <a class="col-lg-10" href="/posts/{{ .Id }}">{{ .Title }}</a>
-                        <a class="col-lg-1" href="#"><span class="icon-pencil"></span>编辑</a>
+                        <a class="col-lg-1" href="/posts/edit?id={{ .Id }}"><span class="icon-pencil"></span>编辑</a>
                         <a class="col-lg-1" href="#"><span class="icon-bin"></span>删除</a>
                     </li>
                     {{ end }}

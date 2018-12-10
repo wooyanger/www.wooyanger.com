@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/kataras/iris/mvc"
 	"strconv"
 	"time"
@@ -15,6 +16,15 @@ type PostController struct {
 const (
 	CreateFatalMsgKey = "CreateFatalMsg"
 )
+
+func getTagId(str []string) []int64 {
+	var tags []int64
+	for s := range str {
+		d, _ := strconv.ParseInt(str[s], 10, 64)
+		tags = append(tags, d)
+	}
+	return tags
+}
 
 func (p *PostController) GetBy(id int64) mvc.Result {
 	post := p.Post.GetPostById(id)
@@ -57,12 +67,15 @@ func (p *PostController) PostNew() {
 	newPost.Content = p.Ctx.PostValue("post-content")
 	newPost.CreateAt, newPost.UpdateAt, newPost.Uid = time.Now(), time.Now(), p.CurrentUserId()
 	pid, err := models.CreatePost(newPost)
-	p.Ctx.Writef("%s, %s", pid, err)
 	if err != nil {
 		p.Session.SetFlash(CreateFatalMsgKey, err)
 	}
-	for tag := range tags {
-		newPostMapTag.Tid, err = strconv.ParseInt(tags[tag], 10, 64)
+	for _, tag := range getTagId(tags) {
+		newPostMapTag.Tid = tag
 		newPostMapTag.Pid = pid
+		if err := models.CreatePostMapTag(newPostMapTag); err != nil {
+			p.Session.SetFlash(CreateFatalMsgKey, err)
+		}
 	}
+	p.Ctx.Redirect(fmt.Sprintf("/posts/%d", pid))
 }

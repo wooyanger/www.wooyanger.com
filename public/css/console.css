@@ -67,6 +67,6 @@
         margin-top: 3rem;
     }
     #editor {
-        min-height: 200px;
+        height: 500px;
     }
 }

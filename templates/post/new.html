@@ -39,8 +39,8 @@
                 var postContent = document.querySelector('input[name=post-content]');
                 var form = document.querySelector('form');
                 form.onsubmit = function () {
-                    postContent.value = editor.container.editor.innerHTML;
+                    postContent.value = editor.container.querySelector("div").innerHTML;
                 }
             </script>
         </div>
-        {{ template "base/footer.html" }}
+{{ template "base/footer.html" .}}

@@ -16,7 +16,7 @@
     {{ end }}
     {{ if .RequireConsolePlugin }}
     <link rel="stylesheet" href="/public/css/console.css">
-    <script type="text/javascript" src="/public/js/console.js"></script>
+    {{/*<script type="text/javascript" src="/public/js/console.js"></script>*/}}
     {{ end }}
 </head>
 <body>
@@ -55,7 +55,7 @@
                 </li>
                 {{ if .Authenticated }}
                     <li class="nav-item">
-                        <a class="nav-link font-weight-bold px-3" href="/console/index">Console</a>
+                        <a class="nav-link font-weight-bold px-3" href="/console/posts">Console</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link font-weight-bold px-3" href="/console/logout">Logout</a>
