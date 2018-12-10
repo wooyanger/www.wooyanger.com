@@ -5,9 +5,11 @@ import (
 	"www.wooyanger.com/models"
 )
 
-const authFatalMsgKey  = "AuthFatalMsg"
-const loginUrl  = "/console/login"
-const consoleUrl  = "/console/posts"
+const (
+	authFatalMsgKey  = "AuthFatalMsg"
+	loginUrl  = "/console/login"
+	consolePostUrl  = "/console/posts"
+)
 
 type ConsoleController struct {
 	Controllers
@@ -18,7 +20,7 @@ type ConsoleController struct {
 func (c *ConsoleController) GetLogin() mvc.Result {
 	if c.IsLogged() {
 		return mvc.Response{
-			Path: consoleUrl,
+			Path: consolePostUrl,
 			Code: 302,
 		}
 	}
@@ -48,7 +50,7 @@ func (c *ConsoleController) PostLogin() {
 		return
 	} else {
 		c.LoginUser(user.Id)
-		c.Ctx.Redirect(consoleUrl, 302)
+		c.Ctx.Redirect(consolePostUrl, 302)
 		return
 	}
 }
@@ -85,4 +87,27 @@ func (c *ConsoleController) GetTags() mvc.Result {
 		Path: loginUrl,
 		Code: 302,
 	}
+}
+
+func (c *ConsoleController) GetSystem() mvc.Result {
+	if c.IsLogged() {
+		siteName := c.Config.GetSiteName()
+		return mvc.View{
+			Name: "console/system.html",
+			Data: map[string]interface{}{
+				"Title": "管理后台",
+				"SiteName": siteName,
+			},
+		}
+	}
+	return mvc.Response{Path: loginUrl, Code: 302,}
+}
+
+func (c *ConsoleController) PostSystem() {
+	if c.IsLogged() {
+		siteName := c.Ctx.PostValue("site-name")
+		c.Ctx.Writef(siteName)
+		return
+	}
+	c.Ctx.Redirect(loginUrl, 302)
 }

@@ -1,0 +1,66 @@
+{{ template "console/head.html" .}}
+<div class="container-fluid">
+    <div class="row mt-lg-2">
+        <div class="col-lg-2">
+            <ul class="nav flex-column console-navbar">
+                <li class="nav-item console-menu-title">管理面板</li>
+                <li class="nav-item console-menu-item">
+                    <a class="nav-link" href="/console/posts">文章管理</a>
+                </li>
+                <li class="nav-item console-menu-item">
+                    <a class="nav-link" href="/console/tags">分类管理</a>
+                </li>
+                <li class="nav-item console-menu-item">
+                    <a class="nav-link selected" href="/console/system">系统管理</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-9 console-content">
+            <div class="console-content-title">
+                <div class="d-inline">
+                    <div class="d-inline-block">
+                        <h2>系统管理</h2>
+                    </div>
+                    {{/*<div class="d-inline-block float-right">*/}}
+                        {{/*<a class="btn btn-primary" href="/tags/new"><span class="icon-plus"></span> 新增</a>*/}}
+                    {{/*</div>*/}}
+                </div>
+            </div>
+            <div class="console-content-content mt-lg-2">
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">站点名称</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="站点名称" value="{{ .SiteName }}" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">站点名称</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="站点名称" value="{{ .SiteName }}" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">站点名称</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="站点名称" value="{{ .SiteName }}" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">站点名称</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="站点名称" value="{{ .SiteName }}" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">站点名称</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="站点名称" value="{{ .SiteName }}" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <button class="btn float-right">保存更改</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,6 +13,7 @@ const UserIdKey  = "UserId"
 type Controllers struct {
 	Ctx			iris.Context
 	Post		*models.Post
+	Config		*models.Config
 	Session		*sessions.Session
 }
 
