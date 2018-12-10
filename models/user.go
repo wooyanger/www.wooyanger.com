@@ -10,11 +10,11 @@ import (
 
 // 定义用户模型
 type User struct {
-	Id				int64		`xorm: "int(12) not null autoincr pk"`
-	Username		string		`xorm: "varchar(32) not null unique"`
-	PasswordHash	string		`xorm: "varchar(64) not null"`
-	Email			string		`xorm: "varchar(64) not null"`
-	CreateAt		time.Time	`xorm: "datetime not null"`
+	Id				int64		`xorm:"int(20) notnull autoincr pk"`
+	Username		string		`xorm:"varchar(255) notnull unique"`
+	PasswordHash	string		`xorm:"varchar(255) notnull"`
+	Email			string		`xorm:"varchar(255) notnull"`
+	CreateAt		time.Time	`xorm:"datetime notnull"`
 }
 
 // 获取用户信息

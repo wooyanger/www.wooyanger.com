@@ -11,3 +11,17 @@ func GetAllPidByTid(id int64) []PostMapTag {
 	x.Find(&allPostMapTag)
 	return allPostMapTag
 }
+
+func CreatePostMapTag(p *PostMapTag) error {
+	if _, err := x.Insert(p); err != nil {
+		return err
+	}
+	return nil
+}
+
+func DeletePostMapTag(p *PostMapTag) error {
+	if _, err := x.Delete(p); err != nil {
+		return err
+	}
+	return nil
+}

@@ -24,6 +24,12 @@ func isTagExist(t string) (bool, error) {
 	return false, nil
 }
 
+func (t *Tag) GetAllTag() []Tag {
+	tags := make([]Tag, 0)
+	x.Find(&tags)
+	return tags
+}
+
 // 新增 Tag
 func NewTag(t *Tag) error {
 	isTag, err := isTagExist(t.Tname)

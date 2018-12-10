@@ -7,19 +7,19 @@ import (
 
 // 文章模型
 type Post struct {
-	Id			int64		`xorm: "int(12) not null autoincr pk"`
-	Title		string		`xorm: "varchar(256) not null unique"`
-	Content		string		`xorm: "text not null"`
-	CreateAt	time.Time	`xorm: "datetime not null"`
-	UpdateAt	time.Time	`xorm: "datetime not null"`
-	Uid			int64		`xorm: "int(12) not null"`
+	Id			int64		`xorm:"int(20) notnull autoincr pk"`
+	Title		string		`xorm:"varchar(255) notnull unique"`
+	Content		string		`xorm:"text notnull"`
+	CreateAt	time.Time	`xorm:"datetime notnull"`
+	UpdateAt	time.Time	`xorm:"datetime notnull"`
+	Uid			int64		`xorm:"int(20) notnull"`
 }
 
 // 获取所有文章
 func (p *Post) GetAllPost() []Post {
-	postList := make([]Post, 0)
-	x.Find(&postList)
-	return postList
+	posts := make([]Post, 0)
+	x.Find(&posts)
+	return posts
 }
 
 // 获取指定文章
@@ -46,19 +46,19 @@ func IsTitleExist(title string) (bool, error) {
 }
 
 // 创建新文章
-func CreatePost(p *Post) error {
+func CreatePost(p *Post) (int64, error) {
 	isTitle, err := IsTitleExist(p.Title)
 	if err != nil {
-		return err
+		return 0, err
 	} else if isTitle {
-		return fmt.Errorf("title has been used [title: %s]", p.Title)
+		return 0, fmt.Errorf("title has been used [title: %s]", p.Title)
 	}
 	sess := x.NewSession()
 	defer sess.Close()
 	if _, err = sess.Insert(p); err != nil {
-		return err
+		return 0, err
 	}
-	return sess.Commit()
+	return p.Id, sess.Commit()
 }
 
 // 更新文章

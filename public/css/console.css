@@ -60,7 +60,7 @@
     .console-content li {
         margin: 0px;
     }
-    .console-content li:nth-of-type(odd) {
+    .console-content-content li:nth-of-type(odd) {
         background-color: rgba(0,0,0,.05);
     }
     .post-edit-widget {

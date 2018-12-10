@@ -7,11 +7,12 @@ import (
 
 const authFatalMsgKey  = "AuthFatalMsg"
 const loginUrl  = "/console/login"
-const consoleUrl  = "/console/index"
+const consoleUrl  = "/console/posts"
 
 type ConsoleController struct {
 	Controllers
 	User			*models.User
+	Tags			*models.Tag
 }
 
 func (c *ConsoleController) GetLogin() mvc.Result {
@@ -52,7 +53,7 @@ func (c *ConsoleController) PostLogin() {
 	}
 }
 
-func (c *ConsoleController) GetIndex() mvc.Result {
+func (c *ConsoleController) GetPosts() mvc.Result {
 	if c.IsLogged() {
 		posts := c.Post.GetAllPost()
 		return mvc.View{
@@ -60,6 +61,23 @@ func (c *ConsoleController) GetIndex() mvc.Result {
 			Data: map[string]interface{}{
 				"Title": "管理后台",
 				"Posts": posts,
+			},
+		}
+	}
+	return mvc.Response{
+		Path: loginUrl,
+		Code: 302,
+	}
+}
+
+func (c *ConsoleController) GetTags() mvc.Result {
+	if c.IsLogged() {
+		tags := c.Tags.GetAllTag()
+		return mvc.View{
+			Name: "console/tags.html",
+			Data: map[string]interface{}{
+				"Title": "管理后台",
+				"Tags": tags,
 			},
 		}
 	}

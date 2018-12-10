@@ -14,7 +14,7 @@ var (
 )
 
 func init()  {
-	tables = append(tables, new(User), new(Post))
+	tables = append(tables, new(User), new(Post), new(Tag))
 	x, e = xorm.NewEngine("mysql", setting.DbDsn)
 	if e != nil {
 		logs.Fatalf("%v", e)
