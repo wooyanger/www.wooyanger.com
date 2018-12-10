@@ -1,7 +1,11 @@
 {{ template "base/head.html" .}}
 <div class="container">
     <div class="post-body">
-    {{ .Post.Title }}
+        <div class="ql-snow">
+            <div class="ql-editor">
+            {{ .PostContent }}
+            </div>
+        </div>
     </div>
 </div>
 {{ template "base/footer.html" .}}

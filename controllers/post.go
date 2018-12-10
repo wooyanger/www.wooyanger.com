@@ -33,7 +33,8 @@ func (p *PostController) GetBy(id int64) mvc.Result {
 		Data: map[string]interface{}{
 			"Title": post.Title,
 			"IntroHeader": post.Title,
-			"Post": post,
+			"IntroContent": fmt.Sprintf("Posted by wooyanger on %v", post.CreateAt),
+			"PostContent": p.HTML(post.Content),
 		},
 	}
 }
@@ -78,4 +79,21 @@ func (p *PostController) PostNew() {
 		}
 	}
 	p.Ctx.Redirect(fmt.Sprintf("/posts/%d", pid))
+}
+
+func (p *PostController) GetEdit() mvc.Result {
+	if p.IsLogged() {
+		id := p.Ctx.FormValue("id")
+		post := p.Post.GetPostById(p.StringToInt64(id))
+		return mvc.View{
+			Name: "post/new.html",
+			Data: map[string]interface{}{
+				"Title": "编辑",
+				"PostTitle": post.Title,
+				"PostContent": p.HTML(post.Content),
+				"RequireQuillPlugin": true,
+			},
+		}
+	}
+	return mvc.Response{Path: loginUrl, Code: 302}
 }

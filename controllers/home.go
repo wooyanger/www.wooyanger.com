@@ -9,15 +9,15 @@ type HomeController struct {
 }
 
 func (h *HomeController) Get() mvc.Result {
-	postList := h.Post.GetAllPost()
-	siteName := h.Config.GetSiteName()
 	return mvc.View{
 		Name: "home.html",
 		Data: map[string]interface{}{
             "Title": "Home",
-			"Posts": postList,
+			"Posts": h.Post.GetAllPost(),
+			"SiteName": h.Config.GetSiteName(),
+            "IntroHeader": "",
+            "IntroContent": h.Config.GetHomeIntroContent(),
 			"Authenticated": h.IsLogged(),
-            "SiteName": siteName,
 		},
 	}
 }

@@ -10,6 +10,7 @@ import (
 
 func main() {
 	app := iris.New()
+	app.Logger().SetLevel("debug")
 	session := sessions.New(setting.SessionCfg)
 	ViewEngine := iris.HTML("./templates", ".html")
 	app.RegisterView(ViewEngine.Reload(true))

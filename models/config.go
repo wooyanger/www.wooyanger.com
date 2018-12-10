@@ -18,6 +18,18 @@ func (c *Config) GetSiteName() string {
 	return config.Value
 }
 
+func (c *Config) GetHomeIntroHeader() string {
+	config := &Config{Name: "home_intro_header"}
+	x.Get(config)
+	return config.Value
+}
+
+func (c *Config) GetHomeIntroContent() string {
+	config := &Config{Name: "home_intro_content"}
+	x.Get(config)
+	return config.Value
+}
+
 func UpdateConfig(c *Config) error {
 	_, err := x.Update(c)
 	if err != nil {

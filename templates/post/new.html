@@ -1,9 +1,9 @@
 {{ template "base/head.html" .}}
         <div class="container-fluid">
-            <div class="post-edit-widget">
+            <div class="mt-lg-5">
                 <form method="post">
                     <div class="form-group">
-                        <input name="post-title" class="form-control" placeholder="文章标题">
+                        <input name="post-title" class="form-control" value="{{ .PostTitle }}" placeholder="文章标题">
                     </div>
                     {{ range .Tags }}
                     <div class="form-group form-check-inline">
@@ -36,9 +36,10 @@
                     placeholder: "您想说点什么？",
                     theme: 'snow'
                 });
-                var postContent = document.querySelector('input[name=post-content]');
+                editor.setText("{{ .PostContent }}");
                 var form = document.querySelector('form');
                 form.onsubmit = function () {
+                    postContent = document.querySelector('input[name=post-content]');
                     postContent.value = editor.container.querySelector("div").innerHTML;
                 }
             </script>

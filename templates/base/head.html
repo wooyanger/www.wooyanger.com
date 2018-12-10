@@ -6,11 +6,11 @@
     <title>{{ .Title }}</title>
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/iconmoon.css">
+    <link rel="stylesheet" href="/public/css/quill.snow.css">
     <link rel="stylesheet" href="/public/css/style.css">
     <script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/public/js/bootstrap.min.js"></script>
     {{ if .RequireQuillPlugin }}
-    <link href="/public/css/quill.snow.css" rel="stylesheet">
     <link href="/public/css/quill-translate.css" rel="stylesheet">
     <script src="/public/js/quill.js"></script>
     {{ end }}
@@ -25,9 +25,9 @@
             <div class="row">
                 <div class="col-10 offset-1 col-lg-8 offset-lg-2">
                     <div class="intro-header">
-                         <h1 class="text-center text-white">{{ .IntroHeader }}</h1>
+                         <h2 class="text-center text-white">{{ .IntroHeader }}</h2>
                          {{/*<p class="text-center text-white">追求卓越，成功自然会追上你。</p>*/}}
-                         <p class="text-center text-white">{{ .IntroContent }}</p>
+                         <p class="m-lg-3 font-weight-bold text-center text-white">{{ .IntroContent }}</p>
                     </div>
                 </div>
             </div>
